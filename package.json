@@ -1,0 +1,11 @@
+{
+  "name": "services",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:AnandChowdhary/services.git",
+  "author": "Anand Chowdhary <mail@anandchowdhary.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@now/node": "^1.2.0"
+  }
+}
