@@ -21,13 +21,17 @@ interface File {
 type Contents = File | File[];
 
 export default async (req: NowRequest, res: NowResponse) => {
-  console.log("Using environment variable", process.env.access_token);
+  console.log(
+    "Using environment variable",
+    JSON.stringify(process.env),
+    process.env.ACCESS_TOKEN
+  );
   try {
     const response = (await axios.get(
       `https://api.github.com/repos/${req.query.repo}/contents/${req.query.path}`,
       {
         headers: {
-          Authorization: `token ${process.env.access_token}`,
+          Authorization: `token ${process.env.ACCESS_TOKEN}`,
           "User-Agent": "AnandChowdhary/services"
         }
       }
