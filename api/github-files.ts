@@ -1,0 +1,49 @@
+import { NowRequest, NowResponse } from "@now/node";
+import axios, { AxiosResponse } from "axios";
+
+interface File {
+  name: string;
+  path: string;
+  sha: string;
+  size: number;
+  url: string;
+  html_url: string;
+  git_url: string;
+  download_url: string;
+  type: "file";
+  _links: {
+    git: string;
+    self: string;
+    url: string;
+  };
+}
+
+type Contents = File | File[];
+
+export default async (req: NowRequest, res: NowResponse) => {
+  console.log("Using environment variable", process.env.access_token);
+  try {
+    const response = (await axios.get(
+      `https://api.github.com/repos/${req.query.repo}/contents/${req.query.path}`,
+      {
+        headers: {
+          Authorization: `token ${process.env.access_token}`,
+          "User-Agent": "AnandChowdhary/services"
+        }
+      }
+    )) as AxiosResponse<Contents>;
+    const files = response.data;
+    if (!Array.isArray(files)) throw new Error("Not a directory");
+    const add = parseInt(req.query.add as string) || 0;
+    const subtract = parseInt(req.query.subtract as string) || 0;
+    const number = files.length + add - subtract;
+    const label = req.query.label || req.query.path;
+    const message = ((req.query.message as string) || "$1$ file$S$")
+      .replace(/\$1\$/g, number.toString())
+      .replace(/\$S\$/g, number === 1 ? "" : "s");
+    const color = req.query.color || "orange";
+    return res.json({ schemaVersion: 1, label, message, color });
+  } catch (error) {
+    return res.status(500).json({ error });
+  }
+};
