@@ -21,11 +21,6 @@ interface File {
 type Contents = File | File[];
 
 export default async (req: NowRequest, res: NowResponse) => {
-  console.log(
-    "Using environment variable",
-    JSON.stringify(process.env),
-    process.env.ACCESS_TOKEN
-  );
   try {
     const response = (await axios.get(
       `https://api.github.com/repos/${req.query.repo}/contents/${req.query.path}`,
@@ -46,6 +41,10 @@ export default async (req: NowRequest, res: NowResponse) => {
       .replace(/\$1\$/g, number.toString())
       .replace(/\$S\$/g, number === 1 ? "" : "s");
     const color = req.query.color || "orange";
+    res.setHeader(
+      "Cache-Control",
+      `max-age=${req.query.cacheAge || 3600}, public`
+    );
     return res.json({ schemaVersion: 1, label, message, color });
   } catch (error) {
     return res.status(500).json({ error });
