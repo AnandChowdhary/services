@@ -1,6 +1,7 @@
 import { NowRequest, NowResponse } from "@now/node";
 import { writeGitHubFile } from "../helpers/github";
 import SpotifyAPI from "spotify-web-api-node";
+import { safeDump } from "js-yaml";
 
 const spotify = new SpotifyAPI({
   clientId: process.env.SPOTIFY_CLIENT_ID,
@@ -12,37 +13,33 @@ const spotify = new SpotifyAPI({
 
 export default async (req: NowRequest, res: NowResponse) => {
   try {
+    const data = await spotify.refreshAccessToken();
+    spotify.setAccessToken(data.body.access_token);
+    const longTermArtists = (
+      await spotify.getMyTopArtists({
+        time_range: "long_term"
+      })
+    ).body.items;
+    const mediumTermArtists = (
+      await spotify.getMyTopArtists({
+        time_range: "medium_term"
+      })
+    ).body.items;
+    const shortTermArtists = (
+      await spotify.getMyTopArtists({
+        time_range: "short_term"
+      })
+    ).body.items;
     await writeGitHubFile(
       "AnandChowdhary/life-data",
       "top-artists.yml",
-      "This is the content"
+      "🎵 Update Spotify top artists data",
+      safeDump({
+        longTermArtists,
+        mediumTermArtists,
+        shortTermArtists
+      })
     );
-    // const data = await spotify.refreshAccessToken();
-    // spotify.setAccessToken(data.body.access_token);
-    // const longTermArtists = (
-    //   await spotify.getMyTopArtists({
-    //     time_range: "long_term"
-    //   })
-    // ).body.items;
-    // const mediumTermArtists = (
-    //   await spotify.getMyTopArtists({
-    //     time_range: "medium_term"
-    //   })
-    // ).body.items;
-    // const shortTermArtists = (
-    //   await spotify.getMyTopArtists({
-    //     time_range: "short_term"
-    //   })
-    // ).body.items;
-    // const spotifyArtists = JSON.stringify(
-    //   {
-    //     longTermArtists,
-    //     mediumTermArtists,
-    //     shortTermArtists
-    //   },
-    //   null,
-    //   2
-    // );
     res.json({ done: true });
   } catch (error) {
     res.status(500);

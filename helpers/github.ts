@@ -1,5 +1,4 @@
 import axios, { AxiosResponse } from "axios";
-
 export interface File {
   name: string;
   path: string;
@@ -32,21 +31,20 @@ export const writeGitHubFile = async (
       }
     }
   )) as AxiosResponse<File>;
-  await fetch(
-    `https://api.github.com/repos/${this.state.repo}/contents/${this.state.file}`,
+  await axios.put(
+    `https://api.github.com/repos/${repo}/contents/${path}`,
     {
-      method: "PUT",
+      message,
+      content: Buffer.from(content).toString("base64"),
+      sha: currentContents.data.sha
+    },
+    {
       headers: {
         "User-Agent": "AnandChowdhary/services",
         Authorization: `token ${process.env.FINDING_ANAND_ACCESS_TOKEN}`,
         Accept: "application/json",
         "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        message,
-        content: btoa(content),
-        sha: currentContents.data.sha
-      })
+      }
     }
   );
 };
