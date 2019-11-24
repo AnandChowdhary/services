@@ -35,7 +35,9 @@ const connectify = (status: string) => {
 
 export default async (req: NowRequest, res: NowResponse) => {
   try {
-    const ownTracks: OwnTracks = req.body;
+    const ownTracks: OwnTracks = { ...req.body };
+    if (!ownTracks || !Object.keys(ownTracks).length)
+      throw new Error("No OwnTracks data found");
     const details = await reverseGeocoding(ownTracks.lat, ownTracks.lon);
     const data = {
       accuracy: ownTracks.acc,
@@ -52,15 +54,32 @@ export default async (req: NowRequest, res: NowResponse) => {
       ...details
     };
     await writeGitHubFile(
-      "AnandChowdhary/finding-anand-data",
+      "AnandChowdhary/life-data-private",
       "location.yml",
       `📍 ${details.display_name}`,
       safeDump(data)
     );
-    console.log("Got ownTracks", JSON.stringify(req.body, null, 2));
+    const publicData = {
+      locality: details.address.locality,
+      city: details.address.city,
+      village: details.address.village,
+      county: details.address.county,
+      suburb: details.address.suburb,
+      state_district: details.address.state_district,
+      state: details.address.state,
+      country: details.address.country
+    };
+    await writeGitHubFile(
+      "AnandChowdhary/life-data",
+      "location.yml",
+      "📍 Update real-time location data",
+      safeDump(publicData)
+    );
     return res.json({ success: true });
   } catch (error) {
-    res.status(500);
+    // Here, we keep 200 because OwnTracks would otherwise
+    // keep sending requests until it sees a 200
+    res.status(200);
     res.json({ error });
   }
 };

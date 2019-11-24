@@ -7,12 +7,15 @@ interface NominatimResult {
   lon: number;
   display_name: string;
   address: {
-    road: string;
-    locality: string;
+    road?: string;
+    locality?: string;
     city: string;
-    state_district: string;
-    state: string;
-    postcode: string;
+    village?: string;
+    county?: string;
+    suburb?: string;
+    state_district?: string;
+    state?: string;
+    postcode?: string;
     country: string;
     country_code: string;
   };
