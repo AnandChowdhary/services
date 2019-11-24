@@ -34,6 +34,7 @@ These endpoints are used as webhooks for a cron job, and fetch data from various
 | -------- | ----------- | ---- |
 | `/spotify` | My top artists data from Spotify | [top-artists.yml](https://github.com/AnandChowdhary/life-data/blob/master/top-artists.yml) |
 | `/wakatime` | My programming data from Wakatime | [development.yml](https://github.com/AnandChowdhary/life-data/blob/master/development.yml) |
+| `/owntracks` | My real-time location from OwnTracks | [location.json](https://github.com/AnandChowdhary/life-data/blob/master/location.json) |
 
 ## 📄 License
 
