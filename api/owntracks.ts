@@ -1,5 +1,7 @@
 import { NowRequest, NowResponse } from "@now/node";
 import { reverseGeocoding } from "../helpers/open-street-maps";
+import { writeGitHubFile } from "../helpers/github";
+import { safeDump } from "js-yaml";
 
 interface OwnTracks {
   cog: number;
@@ -34,6 +36,7 @@ const connectify = (status: string) => {
 export default async (req: NowRequest, res: NowResponse) => {
   try {
     const ownTracks: OwnTracks = req.body;
+    const details = await reverseGeocoding(ownTracks.lat, ownTracks.lon);
     const data = {
       accuracy: ownTracks.acc,
       altitude: ownTracks.alt,
@@ -46,8 +49,14 @@ export default async (req: NowRequest, res: NowResponse) => {
       device: ownTracks.topic,
       connection: connectify(ownTracks.conn || "u"),
       time: new Date(ownTracks.tst * 1000),
-      ...(await reverseGeocoding(ownTracks.lat, ownTracks.lon))
+      ...details
     };
+    await writeGitHubFile(
+      "AnandChowdhary/finding-anand-data",
+      "location.yml",
+      `📍 ${details.display_name}`,
+      safeDump(data)
+    );
     console.log("Got ownTracks", JSON.stringify(req.body, null, 2));
     return res.json({ success: true });
   } catch (error) {

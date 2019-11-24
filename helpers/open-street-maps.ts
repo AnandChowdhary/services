@@ -9,6 +9,7 @@ interface NominatimResult {
   address: {
     road: string;
     locality: string;
+    city: string;
     state_district: string;
     state: string;
     postcode: string;
@@ -22,6 +23,8 @@ export const reverseGeocoding = async (latitude: number, longitude: number) => {
     `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
   );
   const data = { ...result.data };
+  data.display_name =
+    data.display_name || data.address.city || data.address.country;
   delete data.lat;
   delete data.lon;
   delete data.licence;
