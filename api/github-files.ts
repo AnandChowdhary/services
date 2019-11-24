@@ -1,22 +1,6 @@
 import { NowRequest, NowResponse } from "@now/node";
 import axios, { AxiosResponse } from "axios";
-
-interface File {
-  name: string;
-  path: string;
-  sha: string;
-  size: number;
-  url: string;
-  html_url: string;
-  git_url: string;
-  download_url: string;
-  type: "file";
-  _links: {
-    git: string;
-    self: string;
-    url: string;
-  };
-}
+import { File } from "../helpers/github";
 
 type Contents = File | File[];
 
