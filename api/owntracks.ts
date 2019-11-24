@@ -39,7 +39,7 @@ export default async (req: NowRequest, res: NowResponse) => {
     if (!ownTracks || !Object.keys(ownTracks).length)
       throw new Error("No OwnTracks data found");
     const details = await reverseGeocoding(ownTracks.lat, ownTracks.lon);
-    const data = {
+    const privateData = {
       accuracy: ownTracks.acc,
       altitude: ownTracks.alt,
       altitudeAccuracy: ownTracks.vac,
@@ -55,9 +55,9 @@ export default async (req: NowRequest, res: NowResponse) => {
     };
     await writeGitHubFile(
       "AnandChowdhary/life-data-private",
-      "location.yml",
+      "location.json",
       `📍 ${details.display_name}`,
-      safeDump(data)
+      JSON.stringify(privateData, null, 2)
     );
     const publicData = {
       locality: details.address.locality,
@@ -71,9 +71,9 @@ export default async (req: NowRequest, res: NowResponse) => {
     };
     await writeGitHubFile(
       "AnandChowdhary/life-data",
-      "location.yml",
+      "location.json",
       "📍 Update real-time location data",
-      safeDump(publicData)
+      JSON.stringify(publicData, null, 2)
     );
     return res.json({ success: true });
   } catch (error) {
