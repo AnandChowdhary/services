@@ -26,6 +26,15 @@ Returns a [Shields.io schema](https://shields.io/endpoint) for a badge with the 
 - <sup>1</sup> Add and subtract numbers can be used, for example, to subtract the index.html file and return the number of content files
 - <sup>2</sup> Special variables $1$ and $S$ are replaced with the number of files and pluralized "s" respectively
 
+### Life data endpoints
+
+These endpoints are used as webhooks for a cron job, and fetch data from various web services' APIs and update my [Life Data GitHub repo](https://github.com/AnandChowdhary/life-data).
+
+| Endpoint | Description | File |
+| -------- | ----------- | ---- |
+| `/spotify` | My top artists data from Spotify | [top-artists.yml](https://github.com/AnandChowdhary/life-data/blob/master/top-artists.yml) |
+| `/wakatime` | My programming data from Wakatime | [development.yml](https://github.com/AnandChowdhary/life-data/blob/master/development.yml) |
+
 ## 📄 License
 
 [MIT](https://github.com/AnandChowdhary/services/blob/master/LICENSE) © [Anand Chowdhary](https://anandchowdhary.com)
