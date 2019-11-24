@@ -1,7 +1,9 @@
 {
   "env": {
     "ACCESS_TOKEN": "@access_token",
-    "SPOTIFY_CLIENT_ID": "@SPOTIFY_CLIENT_ID",
-    "SPOTIFY_CLIENT_SECRET": "@SPOTIFY_CLIENT_SECRET"
+    "SPOTIFY_CLIENT_ID": "@spotify_client_id",
+    "SPOTIFY_CLIENT_SECRET": "@spotify_client_secret",
+    "SPOTIFY_ACCESS_TOKEN": "@spotify_access_token",
+    "SPOTIFY_REFRESH_TOKEN": "@spotify_refresh_token"
   }
 }
