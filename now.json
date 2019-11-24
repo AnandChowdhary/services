@@ -1,5 +1,7 @@
 {
   "env": {
-    "ACCESS_TOKEN": "@access_token"
+    "ACCESS_TOKEN": "@access_token",
+    "SPOTIFY_CLIENT_ID": "@SPOTIFY_CLIENT_ID",
+    "SPOTIFY_CLIENT_SECRET": "@SPOTIFY_CLIENT_SECRET"
   }
 }
