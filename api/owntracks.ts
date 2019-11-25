@@ -73,7 +73,7 @@ export default async (req: NowRequest, res: NowResponse) => {
       "AnandChowdhary/life-data",
       "location.json",
       "📍 Update real-time location data",
-      JSON.stringify(publicData, null, 2)
+      safeDump(publicData)
     );
     return res.json({ success: true });
   } catch (error) {
