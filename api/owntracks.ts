@@ -1,7 +1,6 @@
 import { NowRequest, NowResponse } from "@now/node";
 import { reverseGeocoding } from "../helpers/open-street-maps";
 import { writeGitHubFile, readGitHubFile } from "../helpers/github";
-import { safeDump } from "js-yaml";
 import axios from "axios";
 
 interface OwnTracks {
@@ -76,7 +75,7 @@ export default async (req: NowRequest, res: NowResponse) => {
     );
     if (
       currentGitHubData.content.replace(/\n/g, "") !==
-      Buffer.from(safeDump(publicData)).toString("base64")
+      Buffer.from(JSON.stringify(publicData, null, 2)).toString("base64")
     ) {
       await axios.post(
         `https://maker.ifttt.com/trigger/location_changed/with/key/${process.env.IFTTT_WEBHOOK_LOCATION_KEY}`,
@@ -94,11 +93,12 @@ export default async (req: NowRequest, res: NowResponse) => {
         "AnandChowdhary/life-data",
         "location.json",
         "📍 Update real-time location data",
-        safeDump(publicData)
+        JSON.stringify(publicData, null, 2)
       );
     }
     return res.json({ success: true });
   } catch (error) {
+    console.log("Caught error", error);
     // Here, we keep 200 because OwnTracks would otherwise
     // keep sending requests until it sees a 200
     res.status(200);
