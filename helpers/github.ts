@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from "axios";
+import crypto from "crypto";
 export interface File {
   name: string;
   path: string;
@@ -8,6 +9,7 @@ export interface File {
   html_url: string;
   git_url: string;
   download_url: string;
+  content: string;
   type: "file";
   _links: {
     git: string;
@@ -20,7 +22,8 @@ export const writeGitHubFile = async (
   repo: string,
   path: string,
   message: string,
-  content: string
+  content: string,
+  force = false
 ) => {
   const currentContents = (await axios.get(
     `https://api.github.com/repos/${repo}/contents/${path}`,
@@ -31,6 +34,12 @@ export const writeGitHubFile = async (
       }
     }
   )) as AxiosResponse<File>;
+  if (
+    currentContents.data.content.replace(/\n/g, "") ===
+      Buffer.from(content).toString("base64") &&
+    !force
+  )
+    return;
   await axios.put(
     `https://api.github.com/repos/${repo}/contents/${path}`,
     {
