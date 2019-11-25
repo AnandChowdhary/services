@@ -18,6 +18,19 @@ export interface File {
   };
 }
 
+export const readGitHubFile = async (repo: string, path: string) => {
+  const currentContents = (await axios.get(
+    `https://api.github.com/repos/${repo}/contents/${path}`,
+    {
+      headers: {
+        "User-Agent": "AnandChowdhary/services",
+        Authorization: `token ${process.env.FINDING_ANAND_ACCESS_TOKEN}`
+      }
+    }
+  )) as AxiosResponse<File>;
+  return currentContents.data;
+};
+
 export const writeGitHubFile = async (
   repo: string,
   path: string,

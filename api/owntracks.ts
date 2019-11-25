@@ -1,7 +1,8 @@
 import { NowRequest, NowResponse } from "@now/node";
 import { reverseGeocoding } from "../helpers/open-street-maps";
-import { writeGitHubFile } from "../helpers/github";
+import { writeGitHubFile, readGitHubFile } from "../helpers/github";
 import { safeDump } from "js-yaml";
+import axios from "axios";
 
 interface OwnTracks {
   cog: number;
@@ -69,12 +70,33 @@ export default async (req: NowRequest, res: NowResponse) => {
       state: details.address.state,
       country: details.address.country
     };
-    await writeGitHubFile(
+    const currentGitHubData = await readGitHubFile(
       "AnandChowdhary/life-data",
-      "location.json",
-      "📍 Update real-time location data",
-      safeDump(publicData)
+      "location.json"
     );
+    if (
+      currentGitHubData.content.replace(/\n/g, "") !==
+      Buffer.from(safeDump(publicData)).toString("base64")
+    ) {
+      await axios.post(
+        `https://maker.ifttt.com/trigger/location_changed/with/key/${process.env.IFTTT_WEBHOOK_LOCATION_KEY}`,
+        {
+          value1: `@AnandChowdhary is in ${publicData.city}, ${publicData.country}`
+        },
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          }
+        }
+      );
+      await writeGitHubFile(
+        "AnandChowdhary/life-data",
+        "location.json",
+        "📍 Update real-time location data",
+        safeDump(publicData)
+      );
+    }
     return res.json({ success: true });
   } catch (error) {
     // Here, we keep 200 because OwnTracks would otherwise

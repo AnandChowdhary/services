@@ -6,6 +6,7 @@
     "SPOTIFY_ACCESS_TOKEN": "@spotify_access_token",
     "SPOTIFY_REFRESH_TOKEN": "@spotify_refresh_token",
     "FINDING_ANAND_ACCESS_TOKEN": "@finding_anand_access_token",
-    "WAKATIME_API_KEY": "@wakatime_api_key"
+    "WAKATIME_API_KEY": "@wakatime_api_key",
+    "IFTTT_WEBHOOK_LOCATION_KEY": "@ifttt_webhook_location_key"
   }
 }
