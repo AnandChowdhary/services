@@ -13,6 +13,14 @@ export default async (req: NowRequest, res: NowResponse) => {
       `🌡 Update health data from iPhone`,
       JSON.stringify(yogaData, null, 2)
     );
+    const getSleepSamples = yogaData.getSleepSamples;
+    if (getSleepSamples)
+      await writeGitHubFile(
+        "AnandChowdhary/life-data",
+        "sleep.yml",
+        "🛌 Update sleep data",
+        safeDump(getSleepSamples)
+      );
     const getHeartRateSamples = yogaData.getHeartRateSamples;
     if (getHeartRateSamples)
       await writeGitHubFile(
