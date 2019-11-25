@@ -35,6 +35,12 @@ These endpoints are used as webhooks for a cron job, and fetch data from various
 | `/spotify` | My top artists data from Spotify | [top-artists.yml](https://github.com/AnandChowdhary/life-data/blob/master/top-artists.yml) |
 | `/wakatime` | My programming data from Wakatime | [development.yml](https://github.com/AnandChowdhary/life-data/blob/master/development.yml) |
 | `/owntracks` | My real-time location from OwnTracks | [location.json](https://github.com/AnandChowdhary/life-data/blob/master/location.json) |
+| `/yoga` | My heart rate from HealthKit | [heart-rate.yml](https://github.com/AnandChowdhary/life-data/blob/master/heart-rate.yml) |
+| `/yoga` | My step count from HealthKit | [step-count.yml](https://github.com/AnandChowdhary/life-data/blob/master/step-count.yml) |
+| `/yoga` | My flights climbed from HealthKit | [flights-climbed.yml](https://github.com/AnandChowdhary/life-data/blob/master/flights-climbed.yml) |
+| `/yoga` | My distance from HealthKit | [distance.yml](https://github.com/AnandChowdhary/life-data/blob/master/distance.yml) |
+| `/yoga` | My active energy from HealthKit | [active-energy.yml](https://github.com/AnandChowdhary/life-data/blob/master/active-energy.yml) |
+| `/yoga` | My basal energy from HealthKit | [basal-energy.yml](https://github.com/AnandChowdhary/life-data/blob/master/basal-energy.yml) |
 
 ## 📄 License
 
