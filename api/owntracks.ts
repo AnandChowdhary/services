@@ -2,6 +2,7 @@ import { NowRequest, NowResponse } from "@now/node";
 import { reverseGeocoding } from "../helpers/open-street-maps";
 import { writeGitHubFile, readGitHubFile } from "../helpers/github";
 import axios from "axios";
+import { generateLocationTweet } from "../helpers/tweet-generator";
 
 interface OwnTracks {
   cog: number;
@@ -80,7 +81,9 @@ export default async (req: NowRequest, res: NowResponse) => {
       await axios.post(
         `https://maker.ifttt.com/trigger/location_changed/with/key/${process.env.IFTTT_WEBHOOK_LOCATION_KEY}`,
         {
-          value1: `@AnandChowdhary is in ${publicData.city}, ${publicData.country}`
+          value1: generateLocationTweet(
+            `${publicData.city}, ${publicData.country}`
+          )
         },
         {
           headers: {
