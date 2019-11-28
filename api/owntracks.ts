@@ -82,7 +82,7 @@ export default async (req: NowRequest, res: NowResponse) => {
         `https://maker.ifttt.com/trigger/location_changed/with/key/${process.env.IFTTT_WEBHOOK_LOCATION_KEY}`,
         {
           value1: generateLocationTweet(
-            `${publicData.city}, ${publicData.country}`
+            `${publicData.city || publicData.town || publicData.state || "some city"}, ${publicData.country}`
           )
         },
         {
