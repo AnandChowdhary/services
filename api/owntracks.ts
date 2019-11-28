@@ -62,7 +62,7 @@ export default async (req: NowRequest, res: NowResponse) => {
     );
     const publicData = {
       locality: details.address.locality,
-      city: details.address.city,
+      city: details.address.city || details.address.town,
       village: details.address.village,
       county: details.address.county,
       suburb: details.address.suburb,
@@ -70,19 +70,22 @@ export default async (req: NowRequest, res: NowResponse) => {
       state: details.address.state,
       country: details.address.country
     };
+    if (publicData.country === "United States of America")
+      publicData.country = "United States";
     const currentGitHubData = await readGitHubFile(
       "AnandChowdhary/life-data",
       "location.json"
     );
     if (
       currentGitHubData.content.replace(/\n/g, "") !==
-      Buffer.from(JSON.stringify(publicData, null, 2)).toString("base64")
+        Buffer.from(JSON.stringify(publicData, null, 2)).toString("base64") &&
+      publicData.city
     ) {
       await axios.post(
         `https://maker.ifttt.com/trigger/location_changed/with/key/${process.env.IFTTT_WEBHOOK_LOCATION_KEY}`,
         {
           value1: generateLocationTweet(
-            `${publicData.city || publicData.town || publicData.state || "some city"}, ${publicData.country}`
+            `${publicData.city}, ${publicData.country}`
           )
         },
         {

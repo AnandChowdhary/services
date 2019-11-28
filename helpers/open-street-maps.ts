@@ -8,6 +8,7 @@ interface NominatimResult {
   display_name: string;
   address: {
     road?: string;
+    town?: string;
     locality?: string;
     city: string;
     village?: string;
