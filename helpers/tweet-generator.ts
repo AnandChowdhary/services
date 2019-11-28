@@ -27,7 +27,7 @@ const tweets = [
   "That's my kind of city... $1$. That's where $A$ is.",
   "I always say: Where do you find $A$? In $1$, that's where.",
   "To all the boys i've loved before... $A$ is in $1$",
-  "Just keep stalking, $A$ is in $1$ https://i.imgflip.com/3hr2f6.jpg",
+  "Just keep stalking, $A$ is in $1$ https://imgflip.com/i/3hr2f6",
   "But $A$ is in $1$!!! https://imgflip.com/i/3hr2ie",
   "That's what I do... $A$ is in $1$ https://imgflip.com/i/3hr2rg",
   "Oh my my my $A$ is in $1$ https://imgflip.com/i/3hr2ul",
@@ -58,7 +58,22 @@ const tweets = [
   "Not easy to find but $A$ is in $1$ https://imgflip.com/i/3hr5fr",
   "Bad luck $A$, at $1$ https://imgflip.com/i/3hr5i6",
   "Yeah, because I didn't... $A$ is in $1$ btw https://imgflip.com/i/3hr5l4",
-  "That's what $A$ said but he's in $1$ now https://imgflip.com/i/3hr5p0"
+  "That's what $A$ said but he's in $1$ now https://imgflip.com/i/3hr5p0",
+  "Everywhere... $A$ is in $1$ right now though https://imgflip.com/i/3huqp2",
+  "Nah thanks, I'm good... $A$ is in $1$ https://imgflip.com/i/3huqti",
+  "Okay I will, but $A$ is in $1$ https://imgflip.com/i/3huqzg",
+  "Well yes but $A$ is in $1$ https://imgflip.com/i/3hur4k",
+  "roses are red\nviolets are blue\n$A$ is currently in\n$1$",
+  "I WANT YOU but $A$ is in $1$ https://imgflip.com/i/3hurai",
+  "That is pretty good... and $A$ is in $1$ https://imgflip.com/i/3hurdh",
+  "Okay Mr. President, $A$ is in $1$ https://imgflip.com/i/3hurgl",
+  "Do you think $A$ is in $1$? I do! https://imgflip.com/i/3hurl2",
+  "But if you think $A$ is in $1$, you're right https://imgflip.com/i/3huro9",
+  "Okay internet, $A$ is in $1$ https://imgflip.com/i/3hurq0",
+  "At least you guys agree... $A$ is in $1$ https://imgflip.com/i/3hurs0",
+  "I remember! $A$ is in $1$ https://imgflip.com/i/3hurv1",
+  "Do we really want that? $A$ is in $1$ https://imgflip.com/i/3hurxp",
+  "He's really angry lol... $A$ is in $1$ https://imgflip.com/i/3hus1b"
 ];
 
 export const generateLocationTweet = (location: string) => {
