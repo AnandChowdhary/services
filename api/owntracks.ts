@@ -62,7 +62,7 @@ export default async (req: NowRequest, res: NowResponse) => {
     );
     const publicData = {
       locality: details.address.locality,
-      city: details.address.city || details.address.town,
+      city: details.address.city || details.address.town || details.address.hamlet;
       village: details.address.village,
       county: details.address.county,
       suburb: details.address.suburb,
