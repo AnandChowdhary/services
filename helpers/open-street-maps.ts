@@ -11,6 +11,7 @@ interface NominatimResult {
     town?: string;
     locality?: string;
     city: string;
+    hamlet?: string;
     village?: string;
     county?: string;
     suburb?: string;
