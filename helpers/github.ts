@@ -1,5 +1,4 @@
 import axios, { AxiosResponse } from "axios";
-import crypto from "crypto";
 export interface File {
   name: string;
   path: string;
@@ -16,6 +15,15 @@ export interface File {
     self: string;
     url: string;
   };
+}
+
+export interface User {
+  login: string;
+  id: number;
+  avatar_url: string;
+  html_url: string;
+  contributions: number;
+  type: "User" | "Bot";
 }
 
 export const readGitHubFile = async (repo: string, path: string) => {
