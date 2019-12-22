@@ -6,6 +6,17 @@ These are microservices for automating everyday tasks, written in TypeScript/Nod
 
 ## ⭐ Endpoints
 
+### `/github-contributors`
+
+Returns an SVG image with profile pictures of contributors of a repository on GitHub. [Try it →](https://services.anandchowdhary.now.sh/api/github-contributors?repo=elninotech/uppload)
+
+| Query param | Description | Example |
+| ----------- | ----------- | ------- |
+| `repo` | GitHub repository path | elninotech/uppload |
+| `cacheAge` | Seconds to cache for | 86400 |
+
+![Contributors](https://services.anandchowdhary.now.sh/api/github-contributors?repo=AnandChowdhary/services)
+
 ### `/github-files`
 
 Returns a [Shields.io schema](https://shields.io/endpoint) for a badge with the number of files in a GitHub repository's directory. [Try it →](https://services.anandchowdhary.now.sh/api/github-files?repo=elninotech/uppload&path=src/i18n&subtract=1&label=i18n&message=%241%24%20language%24S%24&color=blueviolet)
