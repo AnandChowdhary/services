@@ -14,7 +14,9 @@ export default async (req: NowRequest, res: NowResponse) => {
         }
       }
     )) as AxiosResponse<User[]>;
-    const contributors = response.data.filter(user => user.type !== "Bot");
+    const contributors = response.data.filter(
+      user => user.type !== "Bot" && !["ImgBotApp"].includes(user.login)
+    );
     res.setHeader(
       "Cache-Control",
       `max-age=${req.query.cacheAge || 86400}, public`
@@ -30,11 +32,15 @@ export default async (req: NowRequest, res: NowResponse) => {
       i++;
     }
     return res.send(`
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${(contributors.length %
-        8) *
-        90 +
-        95}" height="${Math.floor(contributors.length / 8) * 90 +
-      95}">${images}</svg>
+      <svg
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="${(contributors.length % 8) * 90 + 95}"
+        height="${Math.floor(contributors.length / 8) * 90 + 95}"
+      >
+        ${images}
+      </svg>
     `);
   } catch (error) {
     return res.status(500).json({ error });
