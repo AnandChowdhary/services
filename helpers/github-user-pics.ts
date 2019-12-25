@@ -15,7 +15,7 @@ export const githubUserPics = async (
 ) => {
   try {
     const width = safeParam(req.query.width, 85);
-    const contributorsPerLine = safeParam(req.query.contributorsPerLine, 8);
+    const itemsPerLine = safeParam(req.query.itemsPerLine, 8);
     const padding = safeParam(req.query.padding, 5);
     const response = (await axios.get(url, {
       headers: {
@@ -34,8 +34,8 @@ export const githubUserPics = async (
     let images = "";
     let i = 0;
     for await (const contributor of contributors) {
-      images += `<image x="${(i % contributorsPerLine) * (width + padding) +
-        padding}" y="${Math.floor(i / contributorsPerLine) * (width + padding) +
+      images += `<image x="${(i % itemsPerLine) * (width + padding) +
+        padding}" y="${Math.floor(i / itemsPerLine) * (width + padding) +
         padding}" width="${width}" height="${width}" xlink:href="${await imageToDataUri(
         contributor.avatar_url
       )}"><title>${contributor.login}</title></image>`;
@@ -46,10 +46,9 @@ export const githubUserPics = async (
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
-        width="${(contributors.length % contributorsPerLine) *
-          (width + padding) +
+        width="${(contributors.length % itemsPerLine) * (width + padding) +
           (width + padding + padding)}"
-        height="${Math.floor(contributors.length / contributorsPerLine) *
+        height="${Math.floor(contributors.length / itemsPerLine) *
           (width + padding) +
           (width + padding + padding)}"
       >
