@@ -5,6 +5,6 @@ export default async (req: NowRequest, res: NowResponse) => {
   return await githubUserPics(
     req,
     res,
-    `https://api.github.com/repos/${req.query.repo}/contributors`
+    `https://api.github.com/orgs/${req.query.org}/members`
   );
 };
