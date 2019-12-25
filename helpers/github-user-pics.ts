@@ -3,12 +3,20 @@ import axios, { AxiosResponse } from "axios";
 import { User } from "../helpers/github";
 import { imageToDataUri } from "../helpers/files";
 
+const safeParam = (param: string | string[], value: number) =>
+  param && typeof param === "string" && !isNaN(parseInt(param))
+    ? parseInt(param)
+    : value;
+
 export const githubUserPics = async (
   req: NowRequest,
   res: NowResponse,
   url: string
 ) => {
   try {
+    const width = safeParam(req.query.width, 85);
+    const contributorsPerLine = safeParam(req.query.contributorsPerLine, 8);
+    const padding = safeParam(req.query.padding, 5);
     const response = (await axios.get(url, {
       headers: {
         Authorization: `token ${process.env.ACCESS_TOKEN}`,
@@ -26,8 +34,9 @@ export const githubUserPics = async (
     let images = "";
     let i = 0;
     for await (const contributor of contributors) {
-      images += `<image x="${(i % 8) * 90 + 5}" y="${Math.floor(i / 8) * 90 +
-        5}" width="85" height="85" xlink:href="${await imageToDataUri(
+      images += `<image x="${(i % contributorsPerLine) * (width + padding) +
+        padding}" y="${Math.floor(i / contributorsPerLine) * (width + padding) +
+        padding}" width="${width}" height="${width}" xlink:href="${await imageToDataUri(
         contributor.avatar_url
       )}"><title>${contributor.login}</title></image>`;
       i++;
@@ -37,8 +46,12 @@ export const githubUserPics = async (
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
-        width="${(contributors.length % 8) * 90 + 95}"
-        height="${Math.floor(contributors.length / 8) * 90 + 95}"
+        width="${(contributors.length % contributorsPerLine) *
+          (width + padding) +
+          (width + padding + padding)}"
+        height="${Math.floor(contributors.length / contributorsPerLine) *
+          (width + padding) +
+          (width + padding + padding)}"
       >
         ${images}
       </svg>
