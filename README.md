@@ -13,9 +13,26 @@ Returns an SVG image with profile pictures of contributors of a repository on Gi
 | Query param | Description | Example |
 | ----------- | ----------- | ------- |
 | `repo` | GitHub repository path | elninotech/uppload |
+| `width` | Profile picture width in pixels | 85 |
+| `itemsPerLine` | Number of pictures per line | 8 |
+| `padding` | Padding between pictures in pixels | 5 |
 | `cacheAge` | Seconds to cache for | 86400 |
 
-![Contributors](https://services.anandchowdhary.now.sh/api/github-contributors?repo=AnandChowdhary/services)
+![Contributors](https://services.anandchowdhary.now.sh/api/github-contributors?repo=elninotech/uppload)
+
+### `/github-members`
+
+Returns an SVG image with profile pictures of members of a repository on GitHub. [Try it →](https://services.anandchowdhary.now.sh/api/github-members?repo=elninotech/uppload)
+
+| Query param | Description | Example |
+| ----------- | ----------- | ------- |
+| `org` | GitHub organization name | elninotech |
+| `width` | Profile picture width in pixels | 85 |
+| `itemsPerLine` | Number of pictures per line | 8 |
+| `padding` | Padding between pictures in pixels | 5 |
+| `cacheAge` | Seconds to cache for | 86400 |
+
+![Contributors](https://services.anandchowdhary.now.sh/api/github-members?org=elninotech)
 
 ### `/github-files`
 
