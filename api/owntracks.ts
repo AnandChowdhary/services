@@ -109,6 +109,6 @@ export default async (req: NowRequest, res: NowResponse) => {
     // Here, we keep 200 because OwnTracks would otherwise
     // keep sending requests until it sees a 200
     res.status(200);
-    res.json({ error });
+    res.json({ error: "Unable to add OwnTracks data" });
   }
 };

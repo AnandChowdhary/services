@@ -43,6 +43,6 @@ export default async (req: NowRequest, res: NowResponse) => {
     res.json({ done: true });
   } catch (error) {
     res.status(500);
-    res.json({ error });
+    res.json({ error: "Unable to add Spotify data" });
   }
 };

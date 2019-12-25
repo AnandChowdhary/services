@@ -31,6 +31,6 @@ export default async (req: NowRequest, res: NowResponse) => {
     );
     return res.json({ schemaVersion: 1, label, message, color });
   } catch (error) {
-    return res.status(500).json({ error });
+    return res.status(500).json({ error: "Unable to generate schema" });
   }
 };

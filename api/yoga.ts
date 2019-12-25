@@ -74,6 +74,6 @@ export default async (req: NowRequest, res: NowResponse) => {
     return res.json({ success: true });
   } catch (error) {
     res.status(200);
-    res.json({ error });
+    res.json({ error: "Unable to add Yoga data" });
   }
 };
