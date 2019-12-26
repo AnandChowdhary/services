@@ -6,7 +6,8 @@
   "author": "Anand Chowdhary <mail@anandchowdhary.com>",
   "license": "MIT",
   "scripts": {
-    "lint": "prettier '**/*.ts' --write"
+    "lint": "prettier '**/*.ts' --write",
+    "dev": "now dev"
   },
   "devDependencies": {
     "@now/node": "^1.2.0",
