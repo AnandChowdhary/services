@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "lint": "prettier '**/*.ts' --write",
-    "dev": "now dev"
+    "local": "now dev"
   },
   "devDependencies": {
     "@now/node": "^1.2.0",
