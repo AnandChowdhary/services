@@ -36,11 +36,11 @@ export default async (req: NowRequest, res: NowResponse) => {
     );
     let result = "";
     let length = 0;
-    tokens.forEach(token => {
+    for (const token of tokens) {
       if (length + token.length <= limit) {
         result += ` ${token}`;
         length += token.length;
-      }
+      } else break;
     });
     if (result.length < min) throw new Error("too short");
     res.setHeader(
