@@ -43,6 +43,10 @@ export default async (req: NowRequest, res: NowResponse) => {
       }
     });
     if (result.length < min) throw new Error("too short");
+    res.setHeader(
+      "Cache-Control",
+      `max-age=${req.query.cacheAge || 86400}, public`
+    );
     res.send(result);
   } catch (error) {
     res.status(404);
