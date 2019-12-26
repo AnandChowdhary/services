@@ -6,6 +6,16 @@ These are microservices for automating everyday tasks, written in TypeScript/Nod
 
 ## ⭐ Endpoints
 
+### `/wikipedia-summary`
+
+Returns the introductory text for a search term. [Try it →](https://services.anandchowdhary.now.sh/api/wikipedia-summary?q=GitHub)
+
+| Query param | Description | Example |
+| ----------- | ----------- | ------- |
+| `q` | Search query | Oswald Labs |
+| `limit` | Max length of summary | 300 |
+| `min` | Minimum length of summary | 8 |
+
 ### `/github-contributors`
 
 Returns an SVG image with profile pictures of contributors of a repository on GitHub. [Try it →](https://services.anandchowdhary.now.sh/api/github-contributors?repo=elninotech/uppload)
