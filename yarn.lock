@@ -30,13 +30,6 @@
   resolved "https://registry.yarnpkg.com/@types/js-yaml/-/js-yaml-3.12.1.tgz#5c6f4a1eabca84792fbd916f0cb40847f123c656"
   integrity sha512-SGGAhXLHDx+PK4YLNcNGa6goPf9XRWQNAUUbffkwVGGXIxmDKWyGGL4inzq2sPmExu431Ekb9aEMn9BkPqEYFA==
 
-"@types/natural@^0.6.3":
-  version "0.6.3"
-  resolved "https://registry.yarnpkg.com/@types/natural/-/natural-0.6.3.tgz#7816e46f2c0c8dad82111d36e6e37c4c5a121f92"
-  integrity sha512-lObtptI4gTrBKclOl/2kaYQzncYYHQGYv0ONIk94OEifByXLnxiBlZs/5s/QbMJmTRiNt5RvnNjGXRJInbd4IA==
-  dependencies:
-    "@types/node" "*"
-
 "@types/node@*":
   version "12.12.12"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.12.tgz#529bc3e73dbb35dd9e90b0a1c83606a9d3264bdb"
@@ -735,6 +728,13 @@ sylvester@^0.0.12:
   version "0.0.12"
   resolved "https://registry.yarnpkg.com/sylvester/-/sylvester-0.0.12.tgz#5a884415cd2d002c57e7a3aac99462a75ce9fdb4"
   integrity sha1-WohEFc0tACxX56OqyZRip1zp/bQ=
+
+truncate-sentences@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/truncate-sentences/-/truncate-sentences-1.0.0.tgz#c48bdba63b84a190d845fb7afb4169b7e06a05e2"
+  integrity sha512-Q+BUmkm/xq1Es2dVK9B0L36XnrC/Zp3BVPHLydR70iOEMd3Sr+CMaLgtPwDvPuV0qY3Jye2vvMLRfOU5ZA1Y0g==
+  dependencies:
+    natural "^0.6.3"
 
 type-fest@^0.6.0:
   version "0.6.0"

@@ -1,7 +1,6 @@
 import { NowRequest, NowResponse } from "@now/node";
 import axios from "axios";
-import natural from "natural";
-const SentenceTokenizer = new (natural as any).SentenceTokenizer() as natural.WordTokenizer;
+import truncate from "truncate-sentences";
 
 const safeParam = (param: string | string[], value: number) =>
   param && typeof param === "string" && !isNaN(parseInt(param))
@@ -30,18 +29,8 @@ export default async (req: NowRequest, res: NowResponse) => {
       )
     ).data;
     const limit = safeParam(req.query.length, 300);
+    const result = truncate(pageResult.query.pages[pageId].extract, limit);
     const min = safeParam(req.query.length, 50);
-    const tokens = SentenceTokenizer.tokenize(
-      pageResult.query.pages[pageId].extract
-    );
-    let result = "";
-    let length = 0;
-    for (const token of tokens) {
-      if (length + token.length <= limit) {
-        result += ` ${token}`;
-        length += token.length;
-      } else break;
-    });
     if (result.length < min) throw new Error("too short");
     res.setHeader(
       "Cache-Control",
