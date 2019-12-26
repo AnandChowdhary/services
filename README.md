@@ -15,6 +15,7 @@ Returns the introductory text for a search term. [Try it →](https://services.a
 | `q` | Search query | Oswald Labs |
 | `limit` | Max length of summary | 300 |
 | `min` | Minimum length of summary | 8 |
+| `cacheAge` | Seconds to cache for | 86400 |
 
 ### `/github-contributors`
 
