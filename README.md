@@ -33,7 +33,7 @@ Returns an SVG image with profile pictures of contributors of a repository on Gi
 
 ### `/github-members`
 
-Returns an SVG image with profile pictures of members of a repository on GitHub. [Try it →](https://services.anandchowdhary.now.sh/api/github-members?repo=elninotech/uppload)
+Returns an SVG image with profile pictures of members of a repository on GitHub. [Try it →](https://services.anandchowdhary.now.sh/api/github-members?org=elninotech)
 
 | Query param | Description | Example |
 | ----------- | ----------- | ------- |
