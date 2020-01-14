@@ -80,6 +80,7 @@ These endpoints are used as webhooks for a cron job, and fetch data from various
 | `/yoga` | My distance from HealthKit | [distance.yml](https://github.com/AnandChowdhary/life-data/blob/master/distance.yml) |
 | `/yoga` | My active energy from HealthKit | [active-energy.yml](https://github.com/AnandChowdhary/life-data/blob/master/active-energy.yml) |
 | `/yoga` | My basal energy from HealthKit | [basal-energy.yml](https://github.com/AnandChowdhary/life-data/blob/master/basal-energy.yml) |
+| `/instagram-highlights` | My story highlights from Instagram | [instagram-highlights.json](https://github.com/AnandChowdhary/life-data/blob/master/instagram-highlights.json) |
 
 ## 📄 License
 
