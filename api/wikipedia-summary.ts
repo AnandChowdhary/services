@@ -29,7 +29,7 @@ export default async (req: NowRequest, res: NowResponse) => {
       )
     ).data;
     const limit = safeParam(req.query.length, 300);
-    const result = truncate(pageResult.query.pages[pageId].extract.replace(/ *\([^)]*\) */g, ""), limit);
+    const result = truncate(pageResult.query.pages[pageId].extract, limit);
     const min = safeParam(req.query.length, 50);
     if (result.length < min) throw new Error("too short");
     res.setHeader(
