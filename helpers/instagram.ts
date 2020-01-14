@@ -16,7 +16,7 @@ const safeLocations = (locations: any) =>
   }));
 
 const safeImages = (images: ReelsMediaFeedResponseImageVersions2) =>
-  (images || {}).candidates || [];
+  images.candidates || [];
 
 export const safeHighlight = (
   highlight: HighlightsRepositoryHighlightsTrayResponseTrayItem
