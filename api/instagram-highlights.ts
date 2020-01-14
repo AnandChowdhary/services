@@ -25,7 +25,7 @@ const updateInstagramStoryData = async () => {
   items.forEach(item => {
     item.highlightId.forEach((i: string) => highlights.add(i));
   });
-  const highlightData = {};
+  const highlightData: any = {};
   highlights.forEach(highlight => {
     highlightData[highlight] = {
       meta: safeHighlight(safeFirst(tray.tray.filter(i => i.id === highlight))),
@@ -36,7 +36,7 @@ const updateInstagramStoryData = async () => {
     "AnandChowdhary/life-data",
     "instagram-highlights.json",
     "🌇 Update Instagram highlights",
-    JSON.stringify(highlights, null, 2)
+    JSON.stringify(highlightData, null, 2)
   );
 };
 
