@@ -8,6 +8,8 @@
     "FINDING_ANAND_ACCESS_TOKEN": "@finding_anand_access_token",
     "WAKATIME_API_KEY": "@wakatime_api_key",
     "IFTTT_WEBHOOK_LOCATION_KEY": "@ifttt_webhook_location_key",
-    "GOODREADS_API_KEY": "@goodreads_api_key"
+    "GOODREADS_API_KEY": "@goodreads_api_key",
+    "IG_USERNAME": "@ig_username",
+    "IG_PASSWORD": "@ig_password"
   }
 }
