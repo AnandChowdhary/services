@@ -850,6 +850,14 @@ please-upgrade-node@^3.2.0:
   dependencies:
     semver-compare "^1.0.0"
 
+pocketcasts@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/pocketcasts/-/pocketcasts-1.0.1.tgz#363eee29f36eaac6168b67781432bb61d4762c14"
+  integrity sha512-QNlup6ulWeu7k7TjB3zTkl0Kd0PqZJRjgWr78wvYhzEN0yd5n1DsfMHOpeitzDVrp7z5ddMDwq+xxllfUdWWvg==
+  dependencies:
+    request "^2.88.0"
+    request-promise-native "^1.0.7"
+
 prettier@^1.19.1:
   version "1.19.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
@@ -927,6 +935,15 @@ request-promise-core@1.1.3:
   integrity sha512-QIs2+ArIGQVp5ZYbWD5ZLCY29D5CfWizP8eWnm8FoGD1TX61veauETVQbrV60662V0oFBkrDOuaBI8XgtuyYAQ==
   dependencies:
     lodash "^4.17.15"
+
+request-promise-native@^1.0.7:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/request-promise-native/-/request-promise-native-1.0.8.tgz#a455b960b826e44e2bf8999af64dff2bfe58cb36"
+  integrity sha512-dapwLGqkHtwL5AEbfenuzjTYg35Jd6KPytsC2/TLkVMz8rm+tNt72MGUWT1RP/aYawMpN6HqbNGBQaRcBtjQMQ==
+  dependencies:
+    request-promise-core "1.1.3"
+    stealthy-require "^1.1.1"
+    tough-cookie "^2.3.3"
 
 request-promise@^4.2.4:
   version "4.2.5"
