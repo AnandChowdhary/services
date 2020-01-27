@@ -10,6 +10,8 @@
     "IFTTT_WEBHOOK_LOCATION_KEY": "@ifttt_webhook_location_key",
     "GOODREADS_API_KEY": "@goodreads_api_key",
     "IG_USERNAME": "@ig_username",
-    "IG_PASSWORD": "@ig_password"
+    "IG_PASSWORD": "@ig_password",
+    "POCKET_CASTS_USERNAME": "@pocket_casts_username",
+    "POCKET_CASTS_PASSWORD": "@pocket_casts_password"
   }
 }
