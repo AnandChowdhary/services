@@ -11,14 +11,16 @@ const pocketCasts = new PocketCasts(
 export default async (req: NowRequest, res: NowResponse) => {
   try {
     await pocketCasts.login();
-    const list = safeDump(await pocketCasts.getList());
+    if (new Date().getDay() === 3) {
+      const list = safeDump(await pocketCasts.getList());
+      await writeGitHubFile(
+        "AnandChowdhary/life-data",
+        "podcasts.yml",
+        "🎙️ Update Pocket Casts list",
+        list
+      );
+    }
     const history = safeDump(await pocketCasts.getHistory());
-    await writeGitHubFile(
-      "AnandChowdhary/life-data",
-      "podcasts.yml",
-      "🎙️ Update Pocket Casts list",
-      list
-    );
     await writeGitHubFile(
       "AnandChowdhary/life-data",
       "podcast-history.yml",
