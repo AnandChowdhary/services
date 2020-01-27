@@ -14,6 +14,8 @@
     "POCKET_CASTS_USERNAME": "@pocket_casts_username",
     "POCKET_CASTS_PASSWORD": "@pocket_casts_password",
     "GMAIL_REFRESH": "@gmail_refresh",
-    "GMAIL_ACCESS": "@gmail_access"
+    "GMAIL_ACCESS": "@gmail_access",
+    "GMAIL_CLIENT_ID": "@gmail_client_id",
+    "GMAIL_CLIENT_SECRET": "@gmail_client_secret"
   }
 }
