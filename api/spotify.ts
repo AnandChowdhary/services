@@ -2,6 +2,7 @@ import { NowRequest, NowResponse } from "@now/node";
 import { writeGitHubFile } from "../helpers/github";
 import SpotifyAPI from "spotify-web-api-node";
 import { safeDump } from "js-yaml";
+import { cleanSpotifyArtistsResponse } from "../helpers/spotify";
 
 const spotify = new SpotifyAPI({
   clientId: process.env.SPOTIFY_CLIENT_ID,
@@ -15,21 +16,27 @@ export default async (req: NowRequest, res: NowResponse) => {
   try {
     const data = await spotify.refreshAccessToken();
     spotify.setAccessToken(data.body.access_token);
-    const longTermArtists = (
-      await spotify.getMyTopArtists({
-        time_range: "long_term"
-      })
-    ).body.items;
-    const mediumTermArtists = (
-      await spotify.getMyTopArtists({
-        time_range: "medium_term"
-      })
-    ).body.items;
-    const shortTermArtists = (
-      await spotify.getMyTopArtists({
-        time_range: "short_term"
-      })
-    ).body.items;
+    const longTermArtists = cleanSpotifyArtistsResponse(
+      (
+        await spotify.getMyTopArtists({
+          time_range: "long_term"
+        })
+      ).body.items
+    );
+    const mediumTermArtists = cleanSpotifyArtistsResponse(
+      (
+        await spotify.getMyTopArtists({
+          time_range: "medium_term"
+        })
+      ).body.items
+    );
+    const shortTermArtists = cleanSpotifyArtistsResponse(
+      (
+        await spotify.getMyTopArtists({
+          time_range: "short_term"
+        })
+      ).body.items
+    );
     await writeGitHubFile(
       "AnandChowdhary/life-data",
       "top-artists.yml",
