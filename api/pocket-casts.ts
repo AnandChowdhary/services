@@ -12,7 +12,7 @@ export default async (req: NowRequest, res: NowResponse) => {
   try {
     await pocketCasts.login();
     if (new Date().getDay() === 3) {
-      const list = safeDump(await pocketCasts.getList());
+      const list = safeDump((await pocketCasts.getList()).podcasts);
       await writeGitHubFile(
         "AnandChowdhary/life-data",
         "podcasts.yml",
@@ -20,7 +20,7 @@ export default async (req: NowRequest, res: NowResponse) => {
         list
       );
     }
-    const history = safeDump(await pocketCasts.getHistory());
+    const history = safeDump((await pocketCasts.getHistory()).episodes);
     await writeGitHubFile(
       "AnandChowdhary/life-data",
       "podcast-history.yml",
