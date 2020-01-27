@@ -81,6 +81,8 @@ These endpoints are used as webhooks for a cron job, and fetch data from various
 | `/yoga` | My active energy from HealthKit | [active-energy.yml](https://github.com/AnandChowdhary/life-data/blob/master/active-energy.yml) |
 | `/yoga` | My basal energy from HealthKit | [basal-energy.yml](https://github.com/AnandChowdhary/life-data/blob/master/basal-energy.yml) |
 | `/instagram-highlights` | My story highlights from Instagram | [instagram-highlights.json](https://github.com/AnandChowdhary/life-data/blob/master/instagram-highlights.json) |
+| `/pocket-casts` | My podcasts list from Pocket Casts | [podcasts.yml](https://github.com/AnandChowdhary/life-data/blob/master/podcasts.yml) |
+| `/pocket-casts` | My listening history Pocket Casts | [podcast-history.yml](https://github.com/AnandChowdhary/life-data/blob/master/podcast-history.yml) |
 
 ## 📄 License
 
