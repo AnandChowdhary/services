@@ -12,6 +12,8 @@
     "IG_USERNAME": "@ig_username",
     "IG_PASSWORD": "@ig_password",
     "POCKET_CASTS_USERNAME": "@pocket_casts_username",
-    "POCKET_CASTS_PASSWORD": "@pocket_casts_password"
+    "POCKET_CASTS_PASSWORD": "@pocket_casts_password",
+    "GMAIL_REFRESH": "@gmail_refresh",
+    "GMAIL_ACCESS": "@gmail_access"
   }
 }
