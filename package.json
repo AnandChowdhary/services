@@ -23,12 +23,12 @@
   },
   "dependencies": {
     "axios": "^0.19.0",
-    "goodreads": "^0.1.0",
     "googleapis": "^47.0.0",
     "instagram-private-api": "^1.37.1",
     "js-yaml": "^3.13.1",
     "pocketcasts": "^1.0.1",
     "spotify-web-api-node": "^4.0.0",
-    "truncate-sentences": "^1.0.0"
+    "truncate-sentences": "^1.0.0",
+    "xml-js": "^1.6.11"
   }
 }
