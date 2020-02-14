@@ -16,6 +16,8 @@
     "GMAIL_REFRESH": "@gmail_refresh",
     "GMAIL_ACCESS": "@gmail_access",
     "GMAIL_CLIENT_ID": "@gmail_client_id",
-    "GMAIL_CLIENT_SECRET": "@gmail_client_secret"
+    "GMAIL_CLIENT_SECRET": "@gmail_client_secret",
+    "GOODREADS_KEY": "@goodreads_key",
+    "GOODREADS_SECRET": "@goodreads_secret"
   }
 }

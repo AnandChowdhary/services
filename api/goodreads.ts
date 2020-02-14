@@ -1,4 +1,6 @@
 import { NowRequest, NowResponse } from "@now/node";
+import goodreads from "goodreads";
+const gr = new goodreads.client({});
 
 export default async (req: NowRequest, res: NowResponse) => {
   try {
