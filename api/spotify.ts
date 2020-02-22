@@ -44,7 +44,10 @@ export default async (req: NowRequest, res: NowResponse) => {
       await writeGitHubFile(
         "AnandChowdhary/life-data",
         "top-artists.yml",
-        "🎵 Update Spotify top artists data",
+        `🎵 ${[...shortTermArtists]
+          .slice(0, 5)
+          .map(i => i.name)
+          .join(", ")}`,
         safeDump({
           longTermArtists,
           mediumTermArtists,
@@ -76,7 +79,10 @@ export default async (req: NowRequest, res: NowResponse) => {
     await writeGitHubFile(
       "AnandChowdhary/life-data",
       "top-tracks.yml",
-      "🎵 Update Spotify top tracks data",
+      `🎵 ${[...shortTermTracks]
+        .slice(0, 5)
+        .map(i => i.name)
+        .join(", ")}`,
       safeDump({
         longTermTracks,
         mediumTermTracks,

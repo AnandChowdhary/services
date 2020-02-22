@@ -12,11 +12,15 @@ export default async (req: NowRequest, res: NowResponse) => {
   try {
     await pocketCasts.login();
     if (new Date().getDay() === 3) {
-      const list = safeDump((await pocketCasts.getList()).podcasts);
+      const podcasts = (await pocketCasts.getList()).podcasts;
+      const list = safeDump(podcasts);
       await writeGitHubFile(
         "AnandChowdhary/life-data",
         "podcasts.yml",
-        "🎙️ Update Pocket Casts list",
+        `🎙️ ${[...podcasts]
+          .slice(0, 5)
+          .map(i => i.title)
+          .join(", ")}`,
         list
       );
     }

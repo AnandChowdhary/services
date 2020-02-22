@@ -70,7 +70,7 @@ export default async (req: NowRequest, res: NowResponse) => {
     await writeGitHubFile(
       "AnandChowdhary/life-data",
       "emails.yml",
-      "📧 Update Gmail summary",
+      `📧 ${sentToday} sent, ${receivedToday} received`,
       result
     );
     return res.json({ done: true });

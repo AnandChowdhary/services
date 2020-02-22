@@ -28,9 +28,10 @@ export const getGoodreadBooks = async (shelf: string) => {
       thisBook.isbn13 = isbn13;
     } catch (error) {}
     try {
-      const title = bookDetails.filter(i => i.name === "title")[0].elements[0]
-        .text;
-      thisBook.title = title;
+      const title =
+        bookDetails.filter(i => i.name === "title")[0].elements[0].text || "";
+      thisBook.fullTitle = title;
+      thisBook.title = title.split(":")[0];
     } catch (error) {}
     try {
       const image_url = bookDetails.filter(i => i.name === "image_url")[0]

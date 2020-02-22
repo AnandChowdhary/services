@@ -36,7 +36,10 @@ export default async (req: NowRequest, res: NowResponse) => {
     await writeGitHubFile(
       "AnandChowdhary/life-data",
       "development.yml",
-      "👨‍💻 Update Wakatime development data",
+      `👨‍💻 ${[...summary.data.languages]
+        .slice(0, 5)
+        .map(i => i.name)
+        .join(", ")}`,
       safeDump({
         start: summary.data.start,
         end: summary.data.end,

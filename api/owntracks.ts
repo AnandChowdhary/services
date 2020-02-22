@@ -99,7 +99,7 @@ export default async (req: NowRequest, res: NowResponse) => {
       await writeGitHubFile(
         "AnandChowdhary/life-data",
         "location.json",
-        "📍 Update real-time location data",
+        `📍 ${publicData.city}, ${publicData.country}`,
         JSON.stringify(publicData, null, 2)
       );
     }

@@ -20,7 +20,10 @@ export default async (req: NowRequest, res: NowResponse) => {
     await writeGitHubFile(
       "AnandChowdhary/life-data",
       "books.yml",
-      "📘 Update Goodreads books",
+      `📘 ${[...uniqueBooks]
+        .slice(0, 5)
+        .map(i => i.title)
+        .join(", ")}`,
       safeDump(uniqueBooks)
     );
     res.json({ done: true });
