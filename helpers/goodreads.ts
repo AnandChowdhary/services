@@ -10,7 +10,9 @@ export const getGoodreadBooks = async (shelf: string) => {
     }
   );
   const json = JSON.parse(xml2json(response.data));
-  const books = json.elements[0].elements[2].elements;
+  const books = json.elements
+    .filter(i => i.name === "GoodreadsResponse")[0]
+    .elements.filter(i => i.name === "reviews")[0].elements;
   for (const book of books) {
     let thisBook: any = {};
     const bookDetails = book.elements.filter(i => i.name === "book")[0]
