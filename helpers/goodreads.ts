@@ -38,9 +38,18 @@ export const getGoodreadBooks = async (shelf: string) => {
       thisBook.image_url = image_url;
     } catch (error) {}
     try {
-      const image_url = bookDetails.filter(i => i.name === "image_url")[0]
-        .elements[0].text;
-      thisBook.image_url = image_url;
+      const large_image_url = bookDetails.filter(
+        i => i.name === "large_image_url"
+      )[0].elements[0].text;
+      if (!thisBook.image_url && large_image_url)
+        thisBook.image_url = large_image_url;
+    } catch (error) {}
+    try {
+      const small_image_url = bookDetails.filter(
+        i => i.name === "small_image_url"
+      )[0].elements[0].text;
+      if (!thisBook.image_url && small_image_url)
+        thisBook.image_url = small_image_url;
     } catch (error) {}
     try {
       const link = bookDetails.filter(i => i.name === "link")[0].elements[0]
