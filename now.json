@@ -17,6 +17,10 @@
     "GMAIL_ACCESS": "@gmail_access",
     "GMAIL_CLIENT_ID": "@gmail_client_id",
     "GMAIL_CLIENT_SECRET": "@gmail_client_secret",
+    "GOOGLE_DOCS_REFRESH": "@google_docs_refresh",
+    "GOOGLE_DOCS_ACCESS": "@google_docs_access",
+    "GOOGLE_DOCS_CLIENT_ID": "@google_docs_client_id",
+    "GOOGLE_DOCS_CLIENT_SECRET": "@google_docs_client_secret",
     "GOODREADS_KEY": "@goodreads_key",
     "GOODREADS_SECRET": "@goodreads_secret"
   }
