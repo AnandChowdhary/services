@@ -91,7 +91,7 @@ Several secret keys are required to run these services, particularly my private 
 
 - Locally, they are available in the `.env` file.
 - On Now, they come from `now.json` using Now Secrets
-- As backup, the are available in this repo in `secrets.pgp`
+- As backup, the are available in this repo in [`secrets.gpg`](./secrets.gpg), using the public key [`public.asc`](./public.asc) (also [on OpenPGP](https://keys.openpgp.org/search?q=mail%40anandchowdhary.com))
 
 ## 📄 License
 
