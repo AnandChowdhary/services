@@ -6,7 +6,7 @@ import { writeGitHubFile } from "../helpers/github";
 export default async (req: NowRequest, res: NowResponse) => {
   try {
     const result = [
-      ...(await getGoodreadBooks("reading")),
+      ...(await getGoodreadBooks("currently-reading")),
       ...(await getGoodreadBooks("read"))
     ]
       .sort(
