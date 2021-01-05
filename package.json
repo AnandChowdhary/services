@@ -22,7 +22,7 @@
     }
   },
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "googleapis": "^47.0.0",
     "instagram-private-api": "^1.37.1",
     "js-yaml": "^3.13.1",
